@@ -1,0 +1,148 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    height: 10vh; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 20vh;
+    margin: auto;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin: 0 0 0 6vw ;
+}
+
+input[type="text"] {
+    background-color: #000000;
+    color:#ffffff;
+    height: 5vh;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f3f3f3;
+    font-family: 'Poppins',sans-serif;
+}
+.menu{
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(350px,1fr));
+    grid-gap: 20px 40px;
+}
+.heading{
+    background-color: #000000;
+    color: #ffffff;
+    margin-bottom: 30px;
+    padding: 30px 30px 30px 30px;
+    grid-column: 1/-1;
+    text-align:left;
+}
+.heading>h1{
+    font-weight: 400;
+    font-size: 10vw;
+    margin-bottom: 10px;
+}
+.heading>h3{
+    font-weight: 600;
+    font-size: 2vw;
+}
+.filter-bar {
+    margin: 5vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.filter-button {
+    padding: 10px 20px;
+    font-size: 3vw;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.filter-button.active {
+    background-color: #ff0000;
+    color: #ffffff;
+}
+.food-items {
+    display: grid;
+    position: relative;
+    grid-template-rows: auto 1fr;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    margin: 0 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.food-items:hover {
+    cursor:pointer;
+    transform: scale(1.05);
+}
+
+.food-items img{
+    position: relative;
+    height: 40vh;
+    width:100%;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.details{
+    padding: 20px 10px;
+    display: grid;
+    grid-template-rows: auto 1fr 50px;
+    grid-row-gap: 15px;
+}
+.details-sub{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.details-sub>h5{
+    font-weight: 600;
+    font-size: 18px;
+}
+.details>p{
+    color: #6f6f6f;
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    align-self: stretch;
+}
+.footer {
+    margin-top: 6vh;
+    background-color: #ff0000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer img {
+    left: 10vw;
+    width: 10vw;
+    padding-left: 2vw;
+}
+
+.footer p {
+    padding-right: 5vw;
+    font-size: 2vw;
+    font-weight:bolder;
+}
