@@ -40,7 +40,7 @@
                 consoleMsg("Query successful! Number of rows: $results->num_rows");
                 while ($oneRecipe = mysqli_fetch_array($results)) {
                     echo '<div class="container">';
-                    echo '<div class="column">';
+                    echo '<div class="image">';
                     echo '<img src="img/' . $oneRecipe['Main IMG'] . '" alt="Image">';
                     echo '</div>';
                     echo '<div class="column">';
@@ -54,7 +54,7 @@
                     echo '</div>';
 
                     echo '<div class="container">';
-                    echo '<div class="column">';
+                    echo '<div class="image">';
                     echo '<img src="img/' . $oneRecipe['Ingredients IMG'] . '" alt="Image">';
                     echo '</div>';
                     echo '<div class="column">';
