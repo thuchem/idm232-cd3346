@@ -48,7 +48,7 @@ lang="en">
   $query = "SELECT * FROM recipes";
   $results = mysqli_query($db_connection, $query);
   if ($results->num_rows >0) {
-    consoleMsg("Query successfull! nubmer of rows; $results->num_rows");
+    consoleMsg("Query successful! number of rows; $results->num_rows");
     while($oneRecipe = mysqli_fetch_array($results)) {
       echo '<figure class="food-item">';
       echo '<h2 class="title">' .$oneRecipe['Title']. '</h2>';
