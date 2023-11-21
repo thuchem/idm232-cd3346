@@ -141,7 +141,7 @@ body{
 .menu {
     padding: 0;
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(350px,1fr));
+    grid-template-columns: repeat( auto-fit, minmax(320px,1fr));
     grid-gap: 20px 40px;
 }
 
@@ -194,9 +194,7 @@ body{
 .step-items {
     display: grid;
     position: relative;
-    grid-template-columns: 1fr; /* Set to 1 column by default */
     grid-template-rows: auto 1fr;
-    grid-row-gap: 15px;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
     margin: 0 20px;
@@ -208,11 +206,12 @@ body{
     height: 40vh;
     width: 100%;
     object-fit: cover;
+    padding: 0px 0px 15px 0px;
     border-radius: 15px 15px 0 0;
 }
 
 .details {
-    padding: 20px 10px;
+    padding: 10px 10px;
     display: grid;
     grid-template-rows: auto 1fr;
     grid-row-gap: 3vh;
@@ -221,8 +220,10 @@ body{
 
 .details-sub {
     display: grid;
-    grid-template-rows: 1fr 1fr ; /* Equal height for both rows */
+    grid-template-rows: 1fr auto ; /* Equal height for both rows */
     height: 10vh; /* Set a fixed height for each .details-sub */
+    margin: 0 0 1rem 0;
+    
 }
 
 .details-sub > h5 {
@@ -249,12 +250,14 @@ body{
     }
 
     .details-sub > h5 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        padding: 0 2rem 0 0;
     }
 
     .detail-sub> h6 {
         font-size: 2rem;
     }
+    
 
     .heading>h3 {
         font-size: 1.5rem;
@@ -262,29 +265,20 @@ body{
 }
 
 .footer {
+    display: inline;
     margin-top: 6vh;
+    height: 6rem;
     background-color: #ff0000;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.footer img {
-    left: 10vw;
-    width: 10vw;
-    padding-left: 2vw;
-}
-
-.footer p {
-    padding-right: 5vw;
-    font-size: 2vw;
-    font-weight:bolder;
-}
 
 .footer .copyright {
     flex: 1;
     text-align: center;
-    font-size: 1.5vw; 
+    font-size: 1.5rem; 
     font-weight:bolder;
     margin: 0;
 }

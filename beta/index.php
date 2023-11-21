@@ -59,36 +59,35 @@
                     echo '</div>';
                     echo '<div class="column">';
                     echo '<p class="recipe-name">ALL INGREDIENTS</p>';
-                    for ($i = 1; $i <= 13; $i++) {
-                        $ingredientKey = 'Ingredient #' . $i;
-                        $content = $oneRecipe[$ingredientKey];
-                        if (!empty($content)) {
-                            echo '<p class="recipe-des">' . $content . '</p>';
-                        }
+                    $ingredients_Array = explode('*', $oneRecipe['All Ingredients']);
+                    for ($i = 1; $i <= count($ingredients_Array); $i++) {
+                            echo '<p class="recipe-des">' . $ingredients_Array[$i] . '</p>';
                     }
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
                     // convert string in database into array to parse through
                     $step_IMG = explode('*', $oneRecipe['Step IMGs']);
-                    for ($f = 1; $f <= count($step_IMG); $f++) {
-                        $stepTitle = 'Step Title #' . $f;
-                        $stepDesc = 'Step Desc #' . $f;
-                        $stepTitleInfo = $oneRecipe[$stepTitle];
-                        $stepDescInfo = $oneRecipe[$stepDesc];
-                        $imageSource = $step_IMG[$f - 1];
-                    
-                        echo '<div class="step-items">';
-                        echo '<img src="img/' . $imageSource . '">';
-                        echo '<div class="details">';
-                        echo '<div class="details-sub">';
-                        echo '<h5> STEP ' . $f . '</h5>';
-                        echo '<h6>' . $stepTitleInfo . '</h6>';
-                        echo '</div>';
-                        echo '<p>' . $stepDescInfo . '</p>';
-                        echo '</div>';
-                        echo '</div>';
-                    } 
+                    $step_Instructions = explode('*', $oneRecipe['All Steps']);
+                    for ($f = 0; $f <= count($step_Instructions); $f++) {
+                        $firstChar = substr($step_Instructions[$f], 0, 1);
+                        if (is_numeric($firstChar)){
+                            $stepTitle = 'Step Title #' . $firstChar;
+                            $stepDesc = 'Step Desc #' . $firstChar;
+                            $stepTitleInfo = substr($oneRecipe[$stepTitle],2);
+                            $stepDescInfo = $oneRecipe[$stepDesc];
+                            echo '<div class="step-items">';
+                            echo '<img src="img/' . $step_IMG[$firstChar - 1] . '">';
+                            echo '<div class="details">';
+                            echo '<div class="details-sub">';
+                            echo '<h5> STEP ' . $firstChar . '</h5>';
+                            echo '<h6>' . $stepTitleInfo . '</h6>';
+                            echo '</div>';
+                            echo '<p>' . $stepDescInfo . '</p>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    }
                 }
             } else {
                 consoleMsg("QUERY ERROR");
@@ -101,9 +100,7 @@
     </div>
 
     <div class="footer">
-        <img src="img/nomnom-logo.png" alt="Logo">
         <span class="copyright">© 2023 NomNom Recipe</span>
-        <p>THANK YOU!</p>
     </div>
 </body>
 </html>
