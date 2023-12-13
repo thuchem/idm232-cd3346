@@ -1,13 +1,18 @@
 // get the value and submit form on Change
 function submitForm() {
+    var fromCaloriesValue = document.getElementById("fromCalories").value;
+    var toCaloriesValue = document.getElementById("toCalories").value;
+
+    document.getElementById("caloriesForm").action = "index.php?fromCalories=" + fromCaloriesValue + "&toCalories=" + toCaloriesValue;
+
+    // Submit the form
     document.getElementById("caloriesForm").submit();
-    console.log("submit");
 }
 
 function clearForm() {
     document.getElementById('toCalories').value= '';
     document.getElementById('fromCalories').value ='';
-    submitForm(); // Optionally, you can submit the form after resetting to update the search results.
+    submitForm();
 }
 
 function surpriseMe() {
@@ -15,3 +20,5 @@ function surpriseMe() {
     var url = 'index.php?filter=surprise&token=' + randomToken;
     window.location.href = url;
 }
+
+

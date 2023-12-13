@@ -14,10 +14,10 @@
     require_once 'database.php';
 
     // Find if the user typed anything into the search box
-    $search = $_POST['search'];
+    $search = $_GET['search'];
     $filter = $_GET['filter'];
-    $toCalories = $_POST['toCalories'];
-    $fromCalories = $_POST['fromCalories'];
+    $toCalories = $_GET['toCalories'];
+    $fromCalories = $_GET['fromCalories'];
     $token = $_GET['token'];
     ?>
 
@@ -26,7 +26,7 @@
             <img src="img/nomnom-logo.png" alt="NomNom Logo">
         </a>
         <div class="search-bar">
-            <form action="index.php" method="POST" class="search-form">
+            <form action="index.php" method="GET" onsubmit="return true;" class="search-form">
                 <input type="search" id="search" name="search" value="<?php echoSearchValue('search'); ?>" placeholder="Search your recipe!" class="search">
                 <button class="search-button">
                     <img src="img/search-icon.svg" alt="Search Icon">
@@ -35,7 +35,7 @@
         </div>
     </nav>
 
-    <div class="menu">
+    <div class="menu" id="menu1">
         <div class="heading">
             <h1>NOMNOM RECIPES</h1>
             <h3>&mdash; Precision Recipes: Crafted with Detail &mdash;</h3>
@@ -48,30 +48,31 @@
                 <a href="index.php?filter=steak" class="filter-button">STEAK</a>
                 <a href="index.php?filter=turkey" class="filter-button">TURKEY</a>
                 <a href="index.php?filter=vegitarian" class="filter-button">VEGETARIAN</a>
-                <a type="button" class="filter-button" onclick="surpriseMe()">SURPRISE ME!</a>
+                <button class="filter-button" onclick="surpriseMe()">SURPRISE ME!</button>
 
             </div>
 
-            <form action="index.php" method="POST" id="caloriesForm">
+            <form action="index.php" method="GET" id="caloriesForm">
             <h3 class="caloriesHeading">Choose the calories for your dish! </h3>
                 <div class="form_control">
                     <div class="form_control_container">
                         <div class="form_calories_controller">Min: </div>
-                        <input class="form_calories_input" type="number" name="fromCalories" id="fromCalories" value="<?php echoSearchValue('fromCalories'); ?>" step= "50"onchange="submitForm()"/>
+                        <input class="form_calories_input" type="number" name="fromCalories" id="fromCalories" value="<?php echoSearchValue('fromCalories'); ?>" step= "50" min= "0">
                     </div>
                     <div class="form_control_container">
                         <div class="form_calories_controller">Max: </div>
-                        <input class="form_calories_input" type="number" name="toCalories" id="toCalories" value="<?php echoSearchValue('toCalories'); ?>" step= "50" onchange="submitForm()"/>
+                        <input class="form_calories_input" type="number" name="toCalories" id="toCalories" value="<?php echoSearchValue('toCalories'); ?>" step= "50" min= "0">
                     </div>
                     <div class ="form_control_container">
                     <button type="button" class="clear-button" onclick="clearForm()">Clear</button>
                     </div>
                 </div>
+                <button type="submit" style="display: none;"></button>
             </form>
         </div>
     </div>
 
-    <div class="menu">
+    <div class="menu" id="menu2">
         <?php
         consoleMsg("Search is:" . $search);
         consoleMsg("to Calories:" . $toCalories);
@@ -107,9 +108,9 @@
             while ($oneRecipe = mysqli_fetch_array($results)) {
                 $id = $oneRecipe['id']; // Add this line to get the ID
                 ?>
-                <a href="detail.php?recID=<?= $id ?>&filter=<?= urlencode($filter) ?>&token=<?= urlencode($token) ?>" class="link">
+                <a href="detail.php?recID=<?= $id ?>&search=<?= urlencode($search) ?>&filter=<?= urlencode($filter) ?>&token=<?= urlencode($token) ?>&fromCalories=<?= urlencode($fromCalories) ?>&toCalories=<?= urlencode($toCalories) ?>" class="link">
                     <figure class="food-item">
-                        <img src="img/<?= $oneRecipe['Main IMG'] ?>" style="position: relative;
+                        <img src="img/<?= $oneRecipe['Main IMG'] ?>" alt= "recipeIMG" style="position: relative;
                             height: 50vh;
                             width:100%;
                             object-fit: cover;
@@ -125,12 +126,12 @@
             ?>
             <?php
             if(!empty($search)) {
-                echo '<div class="fail">RECIPES NOT FOUND FOR ' . $search . '.<br> PLEASE SEARCH AGAIN!</div>';
+                echo '<div class="fail">RECIPES NOT FOUND FOR "' . strtoupper($search) . '".<br> PLEASE SEARCH AGAIN!</div>';
             } elseif (!empty($fromCalories)) {
                 if(!empty($toCalories)) {
                     echo '<div class="fail">RECIPES NOT FOUND FOR CALORIES BETWEEN ' . $fromCalories . ' AND '. $toCalories . '.<br> PLEASE SEARCH AGAIN!</div>';
                 } else {
-                    echo '<div class="fail">RECIPES NOT FOUND FOR CALORIES ABOVE' . $fromCalories . '.<br> PLEASE SEARCH AGAIN!</div>';
+                    echo '<div class="fail">RECIPES NOT FOUND FOR CALORIES ABOVE ' . $fromCalories . '.<br> PLEASE SEARCH AGAIN!</div>';
                 }
             } elseif (!empty($toCalories)) {
                 echo '<div class="fail">RECIPES NOT FOUND FOR CALORIES UNDER ' . $toCalories . '.<br> PLEASE SEARCH AGAIN!</div>';
@@ -150,3 +151,4 @@
 
 </body>
 </html>
+

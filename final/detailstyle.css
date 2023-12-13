@@ -309,3 +309,218 @@ body{
     display: inline-block;
     margin-left: 0.5em;
 }
+
+/* Image */
+nav .logo img{
+ position:relative;
+ left:21px;
+}
+
+/* Image */
+nav .logo img{
+ left:54px;
+}
+
+/* Navigation */
+nav{
+ display:flex;
+ flex-wrap:nowrap;
+ flex-direction:row;
+}
+
+/* Logo */
+nav a{
+ padding-right:49px;
+}
+
+/* List */
+.heading ul{
+ font-size:25px;
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Recipe des */
+.heading p.recipe-des{
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Input */
+.checklist li input[type=checkbox]{
+ transform:scale(1.42);
+ border-style:none;
+}
+
+/* Menu */
+.menu{
+ grid-template-columns:1fr 1fr 1fr;
+ row-gap:37px;
+ padding-left:3%;
+ padding-right:3%;
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Heading */
+.menu .heading{
+ transform:translatex(0px) translatey(0px);
+ margin-left:-50px;
+ margin-right:-50px;
+}
+
+/* Menu */
+.menu{
+ row-gap:37px;
+ column-gap:9px;
+ margin-bottom:-22px;
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Details */
+.menu .step-items .details{
+ row-gap:22px;
+}
+
+/* Step items */
+.menu .step-items{
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Heading */
+.menu strong h5{
+ margin-bottom:12px;
+}
+
+/* Details */
+.menu strong .details{
+ margin-left:3%;
+ margin-right:3%;
+}
+
+@media (max-width:1024px){
+
+ /* Link */
+ .menu .heading a{
+  margin-left:3% !important;
+  margin-right:3% !important;
+ }
+ 
+ /* Menu */
+ .menu{
+  grid-template-columns:1fr 1fr;
+ }
+ 
+}
+
+@media (max-width:767px){
+
+ /* Menu */
+ .menu{
+  grid-template-columns:1fr !important;
+ }
+ 
+}
+
+@media (max-width:1285px){
+
+ /* Logo */
+ nav a{
+  position:relative;
+  left:-8px;
+ }
+ 
+ /* Link */
+ .menu .heading a{
+  transform:scale(0.94);
+ }
+ 
+}
+
+@media (max-width:1024px){
+
+ /* Logo */
+ nav a{
+  position:relative;
+  left:-16px;
+ }
+ 
+ /* Link */
+ .menu .heading a{
+  transform:scale(0.94);
+ }
+ 
+}
+
+@media (max-width:767px){
+
+ /* Image */
+ nav .logo img{
+  left:33px;
+ }
+ 
+ /* Logo */
+ nav a{
+  position:relative;
+  left:4px;
+ }
+ 
+ /* Link */
+ .menu .heading a{
+  transform:scale(0.84);
+  margin-top:31px;
+ }
+ 
+}
+@media (max-width:1024px){
+
+ /* Heading */
+ .menu .heading h3{
+  font-size:35px;
+ }
+ 
+}
+
+@media (max-width:767px){
+
+ /* Heading */
+ .menu .heading h3{
+  font-size:31px;
+ }
+ 
+}
+
+@media (max-width:1024px){
+
+ /* Heading */
+ .menu .heading h3{
+  font-size:3vw;
+ }
+ 
+}
+
+@media (max-width:767px){
+
+ /* Heading */
+ .menu .heading h3{
+  font-size:4vw;
+ }
+ 
+}
+
+strong {
+  font-weight: normal;
+}
+
+/* Input */
+.checklist li input[type=checkbox]{
+ filter: hue-rotate(129deg);
+}
+
+/* Header step */
+.header_step{
+ text-align:center;
+ margin-top:50px;
+ margin-bottom:50px;
+}
+
+body {
+    overflow-x: hidden;
+}
